@@ -23,5 +23,4 @@ git clone https://github.com/CHN-beta/rkp-ipid.git package/rkp-ipid
 git clone https://github.com/nihaoa15555/luci-app-ua2f.git package/luci-app-ua2f
 git clone https://github.com/nihaoa15555/luci-app-nettask.git package/luci-app-nettest
 git clone https://github.com/nihaoa15555/mac1.git package/luci-mac
-git clone https://github.com/koshev-msk/modemfeed.git package/ttl
 git clone https://github.com/sirpdboy/luci-app-eqosplus.git package/luci-app-eqosplus
