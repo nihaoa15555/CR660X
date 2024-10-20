@@ -22,18 +22,6 @@ git clone https://github.com/Zxilly/UA2F.git package/UA2F
 git clone https://github.com/CHN-beta/rkp-ipid.git package/rkp-ipid
 git clone https://github.com/nihaoa15555/luci-app-nettask.git package/nettask
 git clone https://github.com/nihaoa15555/luci-app-ua2f.git package/luci-ua2f
-#!/bin/bash
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# File name: diy-part2.sh
-# Description: OpenWrt DIY script part 2 (After Update feeds)
-#
-
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 #rm -rf package/lean/luci-theme-argon
@@ -45,14 +33,9 @@ sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='HuaWei'' package/lean/default-settings/files/zzz-default-settings
 
 # 版本号里显示一个自己的名字（ababwnq build $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）
-sed -i 's/OpenWrt /编译时间 $(TZ=UTC-8 date "+%Y.%m.%d") @ Bzzbzb /g' package/lean/default-settings/files/zzz-default-settings
-
-sed -i "s/Xiaomi Mi Router CR660X" target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr660x.dts
-
-# 状态系统增加个性信息
-
-
-
+#sed -i "s/OpenWrt /ababwnq build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/OpenWrt /某不知名人类/g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/Xiaomi Mi Router CR660X/g" target/linux/ramips/dts/mt7621_xiaomi_mi-router-cr6606.dts
 
 #删除原默认主题
 rm -rf package/lean/luci-theme-argon
@@ -60,12 +43,12 @@ rm -rf package/lean/luci-theme-bootstrap
 rm -rf package/lean/luci-theme-material
 rm -rf package/lean/luci-theme-netgear
 #rm -rf package/lean/luci-app-privoxy
-rm -rf package/kenzo/luci-theme-ifit
+#rm -rf package/lean/luci-theme-ifit
 
 #下载主题luci-theme-argon
 #git clone https://github.com/YL2209/luci-theme-argon.git package/lean/luci-theme-argon
 #git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/lean/luci-theme-infinityfreedom
-#git clone https://github.com/nihaoa15555/luci-theme-argon_armygreen.git package/lean/luci-theme-argon_armygreen
+#git clone https://github.com/XXKDB/luci-theme-argon_armygreen.git package/lean/luci-theme-argon_armygreen
 #git clone https://github.com/YL2209/luci-app-privoxy.git package/lean/luci-app-privoxy
 #git clone https://github.com/YL2209/luci-theme-ifit.git package/lean/luci-theme-ifit
 
@@ -136,13 +119,22 @@ sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/theme
 
 # 修改 argon 为默认主题,可根据你喜欢的修改成其他的（不选择那些会自动改变为默认主题的主题才有效果）
 #sed -i 's/luci-theme-bootstrap/luci-theme-ifit/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon_armygreen/g' ./feeds/luci/collections/luci/Makefile
+
+
 
 # 设置密码为空（安装固件时无需密码登陆，然后自己修改想要的密码）
-# sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings
 # 修改想要的root密码
-#sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:88888888/g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:你的密码/g' package/lean/default-settings/files/zzz-default-settings
+# 修改插件名字（修改名字后不知道会不会对插件功能有影响，自己多测试）
+#sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
+
 # 修改默认wifi名称ssid为Xiaomi_R4A
 sed -i 's/ssid=OpenWrt/ssid=Hallow/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-# 修改默认wifi密码key为password
-sed -i 's/encryption=none/encryption=88888888' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 修改默认wifi密码key为Xiaomi_R4A
+sed -i 's/encryption=none/encryption=88888888/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#使用sed 在第四行后添加新字
+#sed -e 120a\set wireless.default_radio${devidx}.key=XXKDB-R4A package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i '/set wireless.default_radio${devidx}.encryption=psk2/a\set wireless.default_radio${devidx}.key=password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
