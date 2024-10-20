@@ -4,6 +4,7 @@ git clone https://github.com/CHN-beta/rkp-ipid.git package/rkp-ipid
 git clone https://github.com/nihaoa15555/luci-app-nettask.git package/nettask
 git clone https://github.com/nihaoa15555/luci-app-ua2f.git package/luci-ua2f
 git clone https://github.com/zfdx123/luci-app-school.git package/luci-school
+git clone https://github.com/muink/luci-app-change-mac.git package/luci-change-mac
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 #rm -rf package/lean/luci-theme-argon
