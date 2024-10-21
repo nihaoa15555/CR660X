@@ -47,7 +47,7 @@ sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:88888888/g
 #sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
 
 # 修改默认wifi名称ssid为Xiaomi_R4A
-sed -i 's/ssid=OpenWrt/ssid=Hallow/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/ssid=OpenWrt/ssid=hallo/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 修改默认wifi密码key为Xiaomi_R4A
 sed -i 's/encryption=none/encryption=88888888/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
