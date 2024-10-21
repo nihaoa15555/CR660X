@@ -51,5 +51,5 @@ sed -i 's/ssid=OpenWrt/ssid=Hallow/g' package/kernel/mac80211/files/lib/wifi/mac
 # 修改默认wifi密码key为Xiaomi_R4A
 sed -i 's/encryption=none/encryption=88888888/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #使用sed 在第四行后添加新字
-#sed -e 120a\set wireless.default_radio${devidx}.key=XXKDB-R4A package/kernel/mac80211/files/lib/wifi/mac80211.sh
-#sed -i '/set wireless.default_radio${devidx}.encryption=psk2/a\set wireless.default_radio${devidx}.key=password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -e 120a\set wireless.default_radio${devidx}.key=88888888 package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i '/set wireless.default_radio${devidx}.encryption=psk2/a\set wireless.default_radio${devidx}.key=88888888' package/kernel/mac80211/files/lib/wifi/mac80211.sh
